@@ -44,8 +44,8 @@ Built as a three-person group project.
 1. Install the [.NET SDK](https://dotnet.microsoft.com/download) (version 8 or newer).
 2. Clone the repo and open the folder:
    ```bash
-   git clone https://github.com/mberry-dev/SteinerSurvivors_MonoGame.git
-   cd SteinerSurvivors_MonoGame
+   git clone https://github.com/mberry-dev/steiner-survivors-monogame.git
+   cd steiner-survivors-monogame
    ```
 3. Run the game:
    ```bash
@@ -69,7 +69,7 @@ Everything in `Content/Audio` is ignored by Git, so your music stays on your com
 ## Project Structure
 
 ```
-SteinerSurvivors_MonoGame/
+steiner-survivors-monogame/
 ├── Game1.cs               # Game loop, game states, menus, input, drawing
 ├── GameSoundtrack.cs      # Music loading and playback
 ├── BackButton.cs          # Reusable menu button
