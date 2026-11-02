@@ -8,6 +8,7 @@ public class GameSoundtrack
 {
     private List<Song> songs;  // List to store all songs
     private ContentManager content;
+    private ContentManager musicContent; // Loads songs from the separate Audio folder
     private int currentSongIndex = 0;  // Keeps track of the current song
     private Random rng = new Random();  // Random number generator for selecting songs
     private bool isMusicPaused = false; // To track if music is paused
@@ -54,18 +55,27 @@ public class GameSoundtrack
     // so the game must keep running without them.
     private Song TryLoad(string name)
     {
-        // The built song may be in Content/Audio or directly in Content
-        foreach (string path in new[] { "Audio/" + name, name })
+        // Music.mgcb builds the songs into an "Audio" folder next to "Content",
+        // so look there first, then inside Content as a fallback.
+        if (musicContent == null)
+            musicContent = new ContentManager(content.ServiceProvider, "Audio");
+
+        try
         {
-            try
-            {
-                return content.Load<Song>(path);
-            }
-            catch (ContentLoadException)
-            {
-            }
+            return musicContent.Load<Song>(name);
         }
-        return null;
+        catch (Exception)
+        {
+        }
+
+        try
+        {
+            return content.Load<Song>("Audio/" + name);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 
     private void LoadSongs()
