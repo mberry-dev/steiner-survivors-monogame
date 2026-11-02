@@ -54,14 +54,18 @@ public class GameSoundtrack
     // so the game must keep running without them.
     private Song TryLoad(string name)
     {
-        try
+        // The built song may be in Content/Audio or directly in Content
+        foreach (string path in new[] { "Audio/" + name, name })
         {
-            return content.Load<Song>("Audio/" + name);
+            try
+            {
+                return content.Load<Song>(path);
+            }
+            catch (ContentLoadException)
+            {
+            }
         }
-        catch (ContentLoadException)
-        {
-            return null;
-        }
+        return null;
     }
 
     private void LoadSongs()
