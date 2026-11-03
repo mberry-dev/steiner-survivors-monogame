@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+
+# Editor and OS files
+.vs/
+.vscode/
+*.user
+.DS_Store
+Thumbs.db
+
+# Music is not included in the public repository (copyright).
+# Put your own tracks and Music.mgcb in Content/Audio/ locally.
+Content/Audio/
+*.mp3
+*.ogg
+*.wav
