@@ -98,6 +98,18 @@ The first run takes a few minutes. .NET downloads MonoGame and its content tools
 - **"The command dotnet tool restore exited with code 1":** run `dotnet tool restore` on its own to see the real error. It's usually the blocked-files issue above, or no internet connection on the first run.
 - **The game is silent:** that's expected. The music isn't included in this repository (see below).
 
+### Command Reference
+
+| Command | What it does |
+| --- | --- |
+| `dotnet --version` | Check that the .NET SDK is installed |
+| `git clone https://github.com/mberry-dev/steiner-survivors-monogame.git` | Download the project |
+| `git pull` | Get the latest changes |
+| `dotnet run` | Build and start the game |
+| `dotnet build` | Build without starting, to check for errors |
+| `dotnet tool restore` | Install MonoGame's content tool (if a build fails on this step) |
+| `dotnet publish -c Release -r win-x64 --self-contained true -o publish` | Build the ready-to-play Windows version into a `publish` folder (how the release is made) |
+
 ## Music
 
 The original soundtrack used commercial songs, so the music files are **not included** in this repository. The game runs normally without them, just silently.
