@@ -4,6 +4,18 @@ A top-down 2D survival game built in C# with the MonoGame framework. Survive wav
 
 Built as a three-person group project.
 
+## Download and Play (Windows)
+
+**[Download the latest version](https://github.com/mberry-dev/steiner-survivors-monogame/releases/latest)**: no install needed.
+
+1. Download `SteinerSurvivors-win-x64.zip` from the release page.
+2. Right-click the ZIP and choose **Extract All**.
+3. Open the extracted folder and double-click **`SteinerSurvivors.exe`**.
+
+If Windows shows "Windows protected your PC", click **More info**, then **Run anyway**. This appears for programs that aren't commercially code-signed. The music isn't included (see [Music](#music)), so the game is silent.
+
+To run it from source instead, or on macOS or Linux, see [Run Locally](#run-locally).
+
 ## Features
 
 - **Main menu** with Play, Settings and Exit buttons and hover effects
