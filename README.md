@@ -1,4 +1,4 @@
-# SteinerSurvivors_MonoGame
+# steiner-survivors-monogame
 
 A top-down 2D survival game built in C# with the MonoGame framework. Survive waves of slimes and skulls, collect XP crystals, level up, and pick upgrades to last as long as you can.
 
