@@ -10,7 +10,7 @@ Built as a three-person group project.
 - **Settings screen** to choose your movement controls: WASD or the arrow keys
 - **Game states:** menu, settings, playing, paused, and game over, with restart or return to the menu
 - **Pause** with the spacebar, plus a confirmation prompt before leaving to the menu
-- **Soundtrack system:** menu music, a random track on demand, and music that pauses and resumes with the game
+- **Soundtrack system:** music when a game starts, a random track on demand, and music that pauses and resumes with the game
 - **Combat:** auto-firing projectiles aimed at the mouse cursor, with two enemy types that chase the player
 - **Progression:** enemies drop XP crystals, an XP bar, level-ups, and a choice of three upgrades
 - **Camera** that follows the player across an animated grass map
@@ -41,18 +41,50 @@ Built as a three-person group project.
 
 ## Run Locally
 
-1. Install the [.NET SDK](https://dotnet.microsoft.com/download) (version 8 or newer).
-2. Clone the repo and open the folder:
-   ```bash
-   git clone https://github.com/mberry-dev/steiner-survivors-monogame.git
-   cd steiner-survivors-monogame
-   ```
-3. Run the game:
-   ```bash
-   dotnet run
-   ```
+### What you need
 
-The first run takes a minute or two while MonoGame and its content tools download. In VS Code, the C# Dev Kit extension is recommended.
+- **Windows, macOS or Linux**
+- **The .NET SDK, version 8 or newer.** Download it from https://dotnet.microsoft.com/download (choose the SDK, not just the runtime). To check that it's installed, open a terminal and run:
+  ```bash
+  dotnet --version
+  ```
+  It should print a version number starting with 8 or higher.
+- **Git** (optional, for cloning). Download it from https://git-scm.com. You can also download the code as a ZIP instead.
+- **VS Code** (optional) with the **C# Dev Kit** extension, if you want to edit the code.
+
+### Step 1: Get the code
+
+**With Git:**
+```bash
+git clone https://github.com/mberry-dev/steiner-survivors-monogame.git
+cd steiner-survivors-monogame
+```
+
+**Without Git:** on the repo page, click **Code → Download ZIP**, then extract the ZIP. On Windows, right-click the ZIP and choose **Extract All**. Open a terminal inside the extracted folder (the one that contains `SteinerSurvivors.csproj`).
+
+### Step 2: Run the game
+
+```bash
+dotnet run
+```
+
+The first run takes a few minutes. .NET downloads MonoGame and its content tools, then builds the game's images and fonts. Later runs start in seconds. The game opens in its own window.
+
+### Using VS Code instead
+
+1. Open VS Code and choose **File → Open Folder**, then select the project folder.
+2. Install the **C# Dev Kit** extension if VS Code suggests it.
+3. Open the terminal with `` Ctrl + ` `` and run `dotnet run`.
+
+### Troubleshooting
+
+- **"dotnet: command not found":** the .NET SDK isn't installed, or the terminal was opened before installing it. Install the SDK, then close and reopen the terminal.
+- **"came from another computer and might be blocked" (Windows, ZIP download):** Windows blocks files downloaded from the internet. In the project folder, run this in PowerShell, then try again:
+  ```powershell
+  Get-ChildItem -Recurse | Unblock-File
+  ```
+- **"The command dotnet tool restore exited with code 1":** run `dotnet tool restore` on its own to see the real error. It's usually the blocked-files issue above, or no internet connection on the first run.
+- **The game is silent:** that's expected. The music isn't included in this repository (see below).
 
 ## Music
 
@@ -62,7 +94,7 @@ To add your own music:
 
 1. Create a `Content/Audio` folder and put your `.mp3` files in it.
 2. Add a `Content/Audio/Music.mgcb` file listing each track (see `Content/Content.mgcb` for the format, using `Mp3Importer` and `SongProcessor`).
-3. Make sure the file names match the track names in `GameSoundtrack.cs` (for example `send_it.mp3` is the menu music).
+3. Make sure the file names match the track names in `GameSoundtrack.cs` (for example `send_it.mp3` plays when a game starts).
 
 Everything in `Content/Audio` is ignored by Git, so your music stays on your computer.
 
